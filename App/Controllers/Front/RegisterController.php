@@ -4,8 +4,8 @@ use App\Controllers\Front\FrontController;
 
 class RegisterController extends FrontController{
     public function viewRegister(){
-        $this->layotHead();
-        include_once "./../App/View/Register.php";
+        $this->layotHead('Register');
+        echo $this->twig->render('Register.twig');
         $this->layotFoter();
         
     }
