@@ -1,7 +1,8 @@
 <?php
 namespace App\Controllers\Front;
+use App\Controllers\Front\FrontController;
 
-class HomeController {
+class HomeController extends FrontController {
 
     public function index() {
         $this->layotHead();
@@ -9,11 +10,4 @@ class HomeController {
         $this->layotFoter();
     }
 
-    private function layotFoter(){
-        include_once "./../App/View/Layot/Foter.twig";
-    }
-
-    private function layotHead(){
-        include_once "./../App/View/Layot/Head.twig";
-    }
 }
