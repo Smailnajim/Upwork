@@ -5,7 +5,7 @@ Les plateformes de freelancing comme Upwork permettent aux entreprises de trouve
 
 
 ## UML
-class diagram et Use case.
+class diagram et Use case
 
 
 ## Fonctionnalités Principales
