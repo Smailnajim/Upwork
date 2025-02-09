@@ -8,7 +8,7 @@ class DataBase{
     private static $host = "localhost";
     private static $dbname = "Upwork_db";
     private static $user = "postgres";
-    private static $code = "";
+    private static $code = "123";
 
     private static $conexion;
     private static $instance;
@@ -16,7 +16,7 @@ class DataBase{
 
     private function __construct(){
         try {
-            $dsn = "pgsql:host=".self::$host."dbname=".self::$dbname;
+            $dsn = "pgsql:host=".self::$host.";dbname=".self::$dbname;
             self::$conexion = new PDO($dsn, self::$user, self::$code);
             self::$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -25,15 +25,14 @@ class DataBase{
         }
     }
 
-    public function getInstance(){
+    public static function getInstance(){
         if(!isset(self::$instance)){
             self::$instance = new self();
         }
         return self::$instance;
     }
 
-
-    public function getConexion(){
+    public static function getConexion(){
         return self::$conexion;
     }
 
