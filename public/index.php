@@ -21,6 +21,10 @@ switch ($path){
         $loginController->viewLogin();
         break;
 
+        case '/DashboardFreelencer':
+           require_once '../App/View/dashF.php';
+            break;
+    
     case 'register':
         $registerController = new RegisterController;
         $registerController->viewRegister();

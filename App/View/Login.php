@@ -5,16 +5,41 @@ use App\Controllers\Front\LoginController;
 $loginController = new LoginController();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    session_destroy();
-
+    // session_start();
     $userf = $loginController->arievUser($_POST['email'], $_POST['password']);
-    var_dump($userf);
     if($userf){
-        
-        // header('location: /UpWork/App/');
+        // session_destroy();
+        $_SESSION['id_user'] = $userf['id'];
+        $_SESSION['Firstname'] = $userf['firstname'];
+        $_SESSION['Lastname'] = $userf['lastname'];
+        $_SESSION['role'] = $userf['id_role'];
+        $_SESSION['email'] = $userf['email'];
+// to do 
+// crier findbyid in role models @return Object role
+
+
+
+        // switch ($role['name']) {
+        //     case 'freelencer':
+        //              header('location: /DashboardFreelencer');
+
+        //         break;
+        //         case 'client':
+        //                  header('location: /UpWork/public/');
+
+        //             break;
+        //             case 'admin':
+        //                      header('location: /UpWork/public/');
+
+        //                 break;
+        //     default:
+        //         # code...
+        //         break;
+        // }
+        header('location: /UpWork/public/');
     }
-    $_SESSION['FirstName'] = $_POST['email'];
-    // header('location: /UpWork/public/');
+    echo 'hello '.$_SESSION['Firstname'].' '.$_SESSION['Lastname'];
+    
 }
 ?>
 <!DOCTYPE html>

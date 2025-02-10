@@ -1,8 +1,8 @@
 <?php 
 session_start();
-if(isset($_SESSION['role'])){
-    echo 'hello '.$_SESSION['FirstName'].' '.$_SESSION['LastName'];
-}
+
+echo 'hello '.$_SESSION['Firstname'].' '.$_SESSION['Lastname'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

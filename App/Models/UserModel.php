@@ -6,9 +6,9 @@ use PDO;
 
 class UserModel{
     private $id;
-    private $email ;
-    private $FirstName ;
-    private $LastName ;
+    private $email;
+    private $FirstName;
+    private $LastName;
     private $id_role;
 
     public function __construct($LastName, $FirstName, $email, $id_role)

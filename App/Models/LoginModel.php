@@ -27,6 +27,10 @@ class LoginModel{
         $stmt->bindParam(':Password',$Password);
         $stmt->execute();
         // var_dump($stmt->fetch());
-        return $stmt->fetch(PDO::FETCH_CLASS, \UserModel);
+        // return $stmt->fetch(PDO::FETCH_CLASS, 'UserModel');
+
+        // $stmt->setFetchMode(PDO::FETCH_CLASS, UserModel::class);
+
+        return $stmt->fetch();
     }
 }

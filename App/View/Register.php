@@ -5,7 +5,7 @@
 
         $registerController = new RegisterController();
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            // session_destroy();
+            session_destroy();
             $_SESSION['role'] = 'client';
             $_SESSION['LastName'] = $_POST['LastName'];
             $_SESSION['FirstName'] = $_POST['FirstName'];
