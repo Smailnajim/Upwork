@@ -14,7 +14,7 @@ switch ($path) {
         $homeController = new HomeController();
         $homeController->index();
         break;
-
+ 
     case 'login':
         $userController = new UserController;
         $userController->viewLogin();
