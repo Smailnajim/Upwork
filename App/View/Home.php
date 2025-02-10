@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(isset($_SESSION['role'])){
+    echo 'hello '.$_SESSION['FirstName'].' '.$_SESSION['LastName'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

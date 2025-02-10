@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\controllers\Core;
+namespace App\Core;
 
 $host = "localhost";
 $dbname = "";
