@@ -29,10 +29,7 @@ class LoginModel{
         // var_dump($stmt->fetch());
         // return $stmt->fetch(PDO::FETCH_CLASS, 'UserModel');
 
-        $r = $stmt->setFetchMode(PDO::FETCH_CLASS, UserModel::class);
-        // $r=$stmt->fetch();
-        var_dump($stmt->fetch());
-        die;
+        return $stmt->fetch();
 
     }
 }

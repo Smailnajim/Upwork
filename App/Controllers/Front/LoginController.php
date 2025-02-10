@@ -15,7 +15,6 @@ class LoginController extends FrontController{
         $this->layotFoter();
         
     }
-
     
     public function arievUser($email, $Password){
         return LoginModel::newSelf()->arievUser($email, $Password);
