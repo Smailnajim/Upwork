@@ -71,9 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <button type="submit" class="btn btn-light">Login</button>
         <?php if ($LoginTheme){ ?>
-        <div class="p-3 text-Danger-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
-            Password or email uncorect!
-        </div>
+        <div class="text-bg-danger p-3">Password or email uncorect!</div>
         <?php }?>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
