@@ -2,7 +2,7 @@
     "name": "youcode/mvc",
     "autoload": {
         "psr-4": {
-            "Youcode\\Mvc\\": "src/"
+            "App\\": "app/"
         }
     },
     "authors": [
@@ -11,5 +11,7 @@
             "email": "ay5jbr2023@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "^3.11"
+    }
 }

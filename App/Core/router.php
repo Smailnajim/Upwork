@@ -1,70 +1,40 @@
 <?php
 
-// namespace App\Core;
+namespace App;
 
-// class Router
-// {
-//     private static $postRoutes = [];
-//     private static $getRoutes = [];
+class Router
+{
+    protected $routes = [];
 
-    
-// }
+    private function addRoute($route, $controller, $action, $method)
+    {
 
-require "./../../vendor/autoload.php";
+        $this->routes[$method][$route] = ['controller' => $controller, 'action' => $action];
+    }
 
-use App\controllers\Front\HomeController;
-use App\controllers\Front\LoginController;
-use App\controllers\Front\RegisterController;
-use App\Core\Database;
+    public function get($route, $controller, $action)
+    {
+        $this->addRoute($route, $controller, $action, "GET");
+    }
 
-// Database::getInstance()->getConnection();
+    public function post($route, $controller, $action)
+    {
+        $this->addRoute($route, $controller, $action, "POST");
+    }
 
+    public function dispatch()
+    {
+        $uri = strtok($_SERVER['REQUEST_URI'], '?');
+        $method =  $_SERVER['REQUEST_METHOD'];
 
+        if (array_key_exists($uri, $this->routes[$method])) {
+            $controller = $this->routes[$method][$uri]['controller'];
+            $action = $this->routes[$method][$uri]['action'];
 
-$path = $_SERVER['REQUEST_URI'];
-
-$path = str_replace('/MVC/public/', '', $path);
-
-switch ($path) {
-
-
-    case '';
-
-
-        break;
-    case '':
-        $homeController = new HomeController();
-        $view = $homeController->index();
-        break;
-
-    case 'login':
-        $loginController = new LoginController;
-        $view = $loginController->viewLogin();
-        break;
-
-    case 'register':
-        $registerController = new RegisterController;
-        $view = $registerController->viewRegister();
-        break;
-    default:
-        echo 'your path :' . $path;
+            $controller = new $controller();
+            $controller->$action();
+        } else {
+            throw new \Exception("No route found for URI: $uri");
+        }
+    }
 }
-if ($path = '') $path = 'Home';
-?>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-       
-    </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body> -->
-
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>  -->

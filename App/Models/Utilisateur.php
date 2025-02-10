@@ -2,7 +2,12 @@
 
 namespace App\Models;
 
-class Utilisateur extends Model
+
+use App\Core\DataBase;
+use PDO;
+use PDOException;
+
+class Utilisateur
 {
 
     private int $id = 0;
@@ -135,6 +140,21 @@ class Utilisateur extends Model
     // public function getRoleId (){
     //     $this->role_id;
     // }
+    
+    public function create(string $firstName, string $lastName, string $email, string $password, string $photo, string $bio, $portfolio)
+    {
+
+        try {
+
+            $query = " INSERT INTO users ('" . $firstName . "','" . $lastName . "','" . $email ."','" . $password ."','" . $photo . "','" . $bio . "','" . $portfolio . ") VALUES ('" . $name ."');";
+            // die($query);
+            $stmt = Database::getInstance()->getConnection()->prepare($query);
+            $stmt->execute();
+            echo "Data created successfully!";
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 
 
 
