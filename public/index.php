@@ -20,14 +20,15 @@ switch ($path) {
         $userController->viewLogin();
         break;
 
-    case '/DashboardFreelencer':
-        require_once '../App/View/dashF.php';
-        break;
-
     case 'register':
         $userController = new UserController;
         $userController->viewRegister();
         break;
+
+    case 'messanger':
+        require_once '../App/View/Messanger.php';
+        break;
+
     default:
         echo 'your path :' . $path;
 }
