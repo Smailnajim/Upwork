@@ -1,4 +1,11 @@
 <?php 
+session_start();
+if(isset($_SESSION['role'])){
+    if($_SESSION['role'] != 'client' && $_SESSION['role'] != 'client' && $_SESSION['role'] == 'client'){
+        header('location: /UpWork/public/');
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
