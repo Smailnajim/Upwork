@@ -1,26 +1,25 @@
 <?php
 session_start();
 
-use App\Controllers\Front\LoginController;
+use App\Controllers\Front\UserController;
 use App\Controllers\Front\RoleController;
 
-$loginController = new LoginController();
+$userController = new UserController();
 $roleController = new RoleController();
 $LoginTheme = 0;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // session_start();
-    $userf = $loginController->arievUser($_POST['email'], $_POST['password']);
+    $userf = $userController->login($_POST['email'], $_POST['password']);
     if ($userf) {
         // session_destroy();
-        $_SESSION['id_user'] = $userf['id'];
-        $_SESSION['Firstname'] = $userf['firstname'];
-        $_SESSION['Lastname'] = $userf['lastname'];
-        $_SESSION['role'] = $roleController->getRoleById($userf['id_role']);
-        $_SESSION['email'] = $userf['email'];
+        $_SESSION['id_user'] = $userf->getid();
+        $_SESSION['Firstname'] = $userf->getfirstname();
+        $_SESSION['Lastname'] = $userf->getlastname();
+        $_SESSION['role'] = $roleController->getRoleById($userf->getid_role());
+        $_SESSION['email'] = $userf->getemail();
         // to do 
         // crier findbyid in role models @return Object role
-
 
 
         // switch ($role['name']) {

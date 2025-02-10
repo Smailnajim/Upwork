@@ -5,10 +5,9 @@
 
         $registerController = new RegisterController();
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            session_destroy();
             $_SESSION['role'] = 'client';
-            $_SESSION['LastName'] = $_POST['LastName'];
-            $_SESSION['FirstName'] = $_POST['FirstName'];
+            $_SESSION['Lastname'] = $_POST['LastName'];
+            $_SESSION['Firstname'] = $_POST['FirstName'];
             $_SESSION['email'] = $_POST['email'];
             // if(isset($_POST['image'])){
             //     $imagePath = './../../public/src/imeges/' . time() . "_" . basename(isset($_FILES["image"]["name"]) ? $_FILES["image"]["name"]: 'file');

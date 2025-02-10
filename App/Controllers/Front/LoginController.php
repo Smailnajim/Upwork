@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers\Front;
 use App\Controllers\Front\FrontController;
-use App\Models\LoginModel;
+use App\Models\UserModel;
 
 class LoginController extends FrontController{
 
@@ -16,7 +16,8 @@ class LoginController extends FrontController{
         
     }
     
-    public function arievUser($email, $Password){
-        return LoginModel::newSelf()->arievUser($email, $Password);
+    public function login($email, $Password){
+        $userModel = new UserModel();
+        return $userModel->login($email, $Password);
     }
 }
