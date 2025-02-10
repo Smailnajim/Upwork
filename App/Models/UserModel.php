@@ -7,16 +7,30 @@ use PDO;
 class UserModel{
     private $id;
     private $email;
-    private $FirstName;
-    private $LastName;
+    private $firstname;
+    private $lastname;
     private $id_role;
+    private $photo;
+    private $portfolio;
+    private $bio; 
+    private $password ; 
 
-    public function __construct($LastName, $FirstName, $email, $id_role)
+
+
+
+    public function __construct($id, $FirstName, $LastName, $id_role, $photo, $bio, $portfolio, $email, $password)
     {
-        $this->LastName = $LastName ;
-        $this->FirstName = $FirstName ;
+        $this->id = $id ;
+        $this->lastname = $LastName ;
+        $this->firstname = $FirstName ;
         $this->email = $email ;
         $this->id_role = $id_role ;
+        $this->photo = $photo;
+        $this->bio = $bio;
+        $this->portfolio  = $portfolio;
+        $this->password  = $password; 
+
+
     }
 
     public function setid($id){

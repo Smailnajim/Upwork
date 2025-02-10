@@ -21,16 +21,18 @@ class LoginModel{
         return self::$selfL;
     }
 
-    public function arievUser($email, $Password){
+    public function arievUser($emaill, $Passwordd){
         $stmt = DataBase::getInstance()->getConexion()->prepare('SELECT * FROM users WHERE email = :email and Password = :Password');
-        $stmt->bindParam(':email',$email);
-        $stmt->bindParam(':Password',$Password);
+        $stmt->bindParam(':email',$emaill);
+        $stmt->bindParam(':Password',$Passwordd);
         $stmt->execute();
         // var_dump($stmt->fetch());
         // return $stmt->fetch(PDO::FETCH_CLASS, 'UserModel');
 
-        // $stmt->setFetchMode(PDO::FETCH_CLASS, UserModel::class);
+        $r = $stmt->setFetchMode(PDO::FETCH_CLASS, UserModel::class);
+        // $r=$stmt->fetch();
+        var_dump($stmt->fetch());
+        die;
 
-        return $stmt->fetch();
     }
 }
