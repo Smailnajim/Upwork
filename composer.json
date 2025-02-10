@@ -1,0 +1,15 @@
+{
+    "name": "youcode/mvc",
+    "autoload": {
+        "psr-4": {
+            "Youcode\\Mvc\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aymen Jebrane",
+            "email": "ay5jbr2023@gmail.com"
+        }
+    ],
+    "require": {}
+}
