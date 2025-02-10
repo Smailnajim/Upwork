@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers\Front;
 use App\Controllers\Front\FrontController;
+use App\Models\LoginModel;
 
 class LoginController extends FrontController{
 
@@ -13,5 +14,10 @@ class LoginController extends FrontController{
         echo $this->twig->render('Login.twig');
         $this->layotFoter();
         
+    }
+
+    
+    public function arievUser($email, $Password){
+        return LoginModel::newSelf()->arievUser($email, $Password);
     }
 }

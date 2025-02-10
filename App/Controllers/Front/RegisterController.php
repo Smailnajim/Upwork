@@ -4,12 +4,6 @@ use App\Controllers\Front\FrontController;
 use App\Models\RegisterModel;
 
 class RegisterController extends FrontController{
-    private $rModel;
-
-    public function __constract()
-    {
-        $this->rModel = RegisterModel::newSelf();
-    }
 
     public function  viewRegister(){
         include_once "./../App/View/Register.php";
