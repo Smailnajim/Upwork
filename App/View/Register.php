@@ -1,25 +1,3 @@
-
-        <?php
-        session_start();
-        use App\Controllers\Front\RegisterController;
-
-        $registerController = new RegisterController();
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $_SESSION['role'] = 'client';
-            $_SESSION['Lastname'] = $_POST['LastName'];
-            $_SESSION['Firstname'] = $_POST['FirstName'];
-            $_SESSION['email'] = $_POST['email'];
-            // if(isset($_POST['image'])){
-            //     $imagePath = './../../public/src/imeges/' . time() . "_" . basename(isset($_FILES["image"]["name"]) ? $_FILES["image"]["name"]: 'file');
-            //     move_uploaded_file($_FILES["image"]["tmp_name"], $imagePath);
-            // }
-            $imagePath = './../../public/src/imeges/z';
-            $registerController->addNewUser($_POST['LastName'], $_POST['FirstName'], $_POST['email'], $_POST['Password'], $imagePath);
-            header('location: /UpWork/public/');
-            
-            // header("Location: ./../views/");
-        }
-        ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +15,7 @@
 
 <body>
 
-    <form action="#" method="POST" class="position-absolute top-50 start-50 translate-middle">
+    <form action="/UpWork/public/register" method="POST" class="position-absolute top-50 start-50 translate-middle">
         <h1>Register</h1>
         <div class="input-group input-group-sm mb-3">
 

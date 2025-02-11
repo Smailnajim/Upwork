@@ -1,7 +1,7 @@
 <?php 
-session_start();
-
-echo 'hello '.$_SESSION['Firstname'].' '.$_SESSION['Lastname'].' Role :'.$_SESSION['role'];
+if(isset($_SESSION['role'])){
+    echo 'hello '.$_SESSION['Firstname'].' '.$_SESSION['Lastname'].' Role :'.$_SESSION['role'];
+}
 
 ?>
 <!DOCTYPE html>
