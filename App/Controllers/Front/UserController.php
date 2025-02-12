@@ -23,7 +23,12 @@ class UserController {
     public function  viewRegister(){
         include_once "./../App/View/Register.php";
     }
-    
+
+    public function  viewMessanger(){
+        include_once '../App/View/Messanger.php';
+    }
+
+
     public function login($email, $Password){
         return $this->userModel->login($email, $Password);
     }
@@ -31,12 +36,14 @@ class UserController {
     public function register($LastName, $FirstName, $email, $Password, $image){
 
         $this->userModel->register($LastName, $FirstName, $email, $Password, $image);
+
+        $_SESSION['role'] = 'client';
+        $_SESSION['id_user'] = $this->userModel->getid();
+        $_SESSION['Lastname'] = $LastName;
+        $_SESSION['Firstname'] = $FirstName;
+        $_SESSION['email'] = $email;
     }
 
-    
-    public function  viewMessanger(){
-        include_once "./../App/View/Messanger.php";
-    }
 
     public function  senMessage(string $sms){
         ;

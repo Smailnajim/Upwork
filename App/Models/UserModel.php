@@ -56,6 +56,10 @@ class UserModel{
         return $stmt->fetch();
     }
 
+    public function  sendMessage(string $sms){
+        $stmt = DataBase::getInstance()->getConexion()->prepare('INSERT INTO chat () * FROM users WHERE email = :email and Password = :Password');
+
+    }
 
     public function getid(){
         return $this->id;

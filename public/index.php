@@ -21,11 +21,6 @@ switch ($path) {
 
     case '/register':
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-            $_SESSION['role'] = 'client';
-            $_SESSION['Lastname'] = $_POST['LastName'];
-            $_SESSION['Firstname'] = $_POST['FirstName'];
-            $_SESSION['email'] = $_POST['email'];
             $imagePath = './../../public/src/imeges/z';
             $userController->register($_POST['LastName'], $_POST['FirstName'], $_POST['email'], $_POST['Password'], $imagePath);
             header('location: /UpWork/public/');
@@ -35,10 +30,14 @@ switch ($path) {
             $userController->viewRegister();
         }
         break;
-        
 
     case '/messanger':
-        require_once '../App/View/Messanger.php';
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            
+        }else if($_SERVER['REQUEST_METHOD'] == 'GET'){
+
+            $userController->viewMessanger();
+        }
         break;
 
     default:

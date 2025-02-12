@@ -13,4 +13,12 @@ CREATE TABLE users(
     portfolio varchar(255),
     email varchar(100) UNIQUE,
     password varchar(255)
-)
+);
+
+CREATE TABLE chat{
+    id_userFrom int REFERENCES users(id),
+    id_userTo int REFERENCES users(id),
+    dateGlobal Date,
+    dateTim TIME,
+    message varchar(255)
+}
