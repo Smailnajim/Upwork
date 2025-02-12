@@ -1,12 +1,20 @@
 <?php
 
+// require '../vendor/autoload.php';
+// use App\utils\test;
+
+
+
+// $role = new Test();
+
+// $role->test();
+
+
+use App\Core\Database;
+
 require '../vendor/autoload.php';
-use App\utils\test;
 
+$router = require '../app/Routes/index.php';
 
-
-$role = new Test();
-
-$role->test();
 
 // $router = require '../app/Routes/index.php';

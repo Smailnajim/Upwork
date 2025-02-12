@@ -2,9 +2,10 @@
 
 namespace App\controllers\Back;
 use App\Models\Role;
+use App\Controller;
 use Exception;
 
-class RoleController
+class RoleController extends Controller
 {
     // private RoleService $roleService;
     private Role $role;

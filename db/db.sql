@@ -1,38 +1,30 @@
--- Active: 1738750890629@@127.0.0.1@5555@postgres
+-- Active: 1738750890629@@127.0.0.1@5555@upwork
+create DATABASE Upwork;
 
-CREATE DATABASE MVC;
+USE Upwork;
 
+;
 
-
-DROP DATABASE MVC;
-
-SHOW DATABASES;
-
-use MVC;
-
-CREATE TABLE test;
-
-CREATE TABLE utilisateur (
-  id SERIAL PRIMARY KEY,
-  first_name VARCHAR(255),
-  last_name VARCHAR(255),
-  email VARCHAR(255),
-  password VARCHAR(255)
+CREATE TABLE roles(
+    id SERIAL PRIMARY KEY,
+    name varchar(50) 
 );
 
-
-
-CREATE TABLE role (
-  id SERIAL PRIMARY KEY,
-  role_name VARCHAR(255),
-  descrition TEXT
+CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    firstname varchar(50) not null,
+    lastname varchar(50) not null,
+    id_role int REFERENCES roles(id),
+    photo varchar(255) not null,
+    bio varchar(255),
+    portfolio varchar(255),
+    email varchar(100) UNIQUE,
+    password varchar(255)
 );
 
+INSERT INTO roles (name)
+VALUES ('freelance');
 
 
-SELECT * FROM utilisateur;
 
-SELECT * FROM role;
-
-
-drop Table cars;
+SELECT * FROM roles;

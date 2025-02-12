@@ -39,9 +39,13 @@ class Test {
 
         // $this->roleController->getByName("Client");
 
-        $this->userController->create("aymen", "jebrane", "aymenjaymen@gmail.com", "5506", "url.png", "Client", "this is bio", "this is portfolio");
+        // $this->userController->create("aymen", "jebrane", "aymenjaymen@gmail.com", "5506", "url.png", "Client", "this is bio", "this is portfolio");
+        // $this->userController->delete("aymen");
+        // $this->userController->update("aymen", "aymen", "jebrane", "aymenjaymen@gmail.com", "5506", "url.png", "Client", "this is bio", "this is portfolio");
 
-
+        // var_dump($this->userController->getAll());
+       $user = $this->userController->getByName("aymen");
+        var_dump($user);
 
 
 

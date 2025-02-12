@@ -11,17 +11,17 @@ class Utilisateur
 {
 
     private int $id = 0;
-    private string $firstName;
-    private string $lastName;
+    private string $firstname;
+    private string $lastname;
     private string $email;
     private string $password;
     // private string $phone;
     private string $photo;
     private string $bio;
     private string $portfolio;
-    private Role $role;
+    private $id_role;
 
-    private string $tablename = "users";
+ 
 
 
 
@@ -38,12 +38,12 @@ class Utilisateur
 
     public function setFirstname(string $firstName): void
     {
-        $this->firstName = $firstName;
+        $this->firstname = $firstName;
     }
 
     public function setLastname(string $lastName): void
     {
-        $this->lastName = $lastName;
+        $this->lastname = $lastName;
     }
 
     public function setEmail(string $email): void
@@ -65,9 +65,9 @@ class Utilisateur
         $this->photo = $photo;
     }
 
-    public function setRole(Role $role): void
+    public function setRoleId($role): void
     {
-        $this->role = $role;
+        $this->id_role = $role;
     }
 
     public function setBio(string $bio): void
@@ -92,12 +92,12 @@ class Utilisateur
 
     public function getFirstname(): string
     {
-        return $this->firstName;
+        return $this->firstname;
     }
 
     public function getLastname(): string
     {
-        return $this->lastName;
+        return $this->lastname;
     }
 
     public function getEmail(): string
@@ -115,9 +115,9 @@ class Utilisateur
         return $this->password;
     }
 
-    public function getRole(): Role
+    public function getRole()
     {
-        return $this->role;
+        return $this->id_role;
     }
 
 
@@ -141,18 +141,94 @@ class Utilisateur
     //     $this->role_id;
     // }
     
-    public function create(string $firstName, string $lastName, string $email, string $password, string $photo, string $bio, $portfolio)
+    public function create(array $data)
     {
 
         try {
 
-            $query = " INSERT INTO users ('" . $firstName . "','" . $lastName . "','" . $email ."','" . $password ."','" . $photo . "','" . $bio . "','" . $portfolio . ") VALUES ('" . $name ."');";
+            $query = " INSERT INTO users (firstName, lastName, id_role, photo, bio, portfolio, email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             // die($query);
             $stmt = Database::getInstance()->getConnection()->prepare($query);
-            $stmt->execute();
+            $stmt->execute ([$data['firstName'], $data['lastName'], $data['id_role'], $data['photo'], $data['bio'], $data['portfolio'] , $data['email'], $data['password']]);
             echo "Data created successfully!";
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function delete($data)
+    {
+
+        try {
+
+            $query = " DELETE FROM  users WHERE firstName = ?";
+            // die($query);
+            $stmt = Database::getInstance()->getConnection()->prepare($query);
+            $stmt->execute([$data['firstName']]);
+            echo "Data deleted successfully!";
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+
+    //update isn't done yet
+
+    public function update($data)
+    {
+
+        try {
+            $query = "UPDATE users SET firstname = ? AND lastname = ? AND photo = ? AND bio = ? AND portfolio = ? AND email = ? AND password = ? 'WHERE id = ?;";
+            // var_dump($query);
+            die($query);
+            $stmt = Database::getInstance()->getConnection()->prepare($query);
+            $stmt->execute([$data['firstName'], $data['lastName'], $data['photo'], $data['bio'], $data['portfolio'], $data['email'], $data['password'], $data['id']]);
+            echo ("data updated succefully");
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+
+
+    public function getAll()
+    {
+
+        try {
+
+            $query = "SELECT * FROM users;";
+            // die($query);
+            $stmt = Database::getInstance()->getConnection()->prepare($query);
+            $stmt->execute();
+            // var_dump($query); 
+            $result = $stmt->fetchAll(PDO::FETCH_CLASS, Utilisateur::class);
+
+            // $result = $stmt->fetchall();
+
+            // var_dump($result);
+            return $result;
+        } catch (PDOException $e) {
+            echo ("Error:" . $e);
+        }
+    }
+
+    public function getByName($user)
+    {
+
+        try {
+            $query = "SELECT * FROM users WHERE firstName = '" . $user . "' ;";
+            // die($query);
+            $stmt = Database::getInstance()->getConnection()->prepare($query);
+            $stmt->execute();
+            //  var_dump($query); 
+            // $result = $stmt->fetchall(PDO::FETCH_CLASS);
+            $result = $stmt->fetchObject(Role::class);
+            // $stmt->setFetchMode(PDO::FETCH_CLASS);
+            // $result = $stmt->fetch();
+            //    var_dump($result);
+            return $result;
+        } catch (PDOException $e) {
+            echo ("Error:" . $e);
         }
     }
 
