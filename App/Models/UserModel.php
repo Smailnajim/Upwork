@@ -61,7 +61,14 @@ class UserModel{
     }
 
     public function  vieWhoMessag(){
-        $stmt = DataBase::getInstance()->getConexion()->prepare('SELECT `chat.id_to`, `users.image` FROM chat WHERE id_from = :idFrom JOIN users on `users.id` = `chat.to`');
+        $stmt = DataBase::getInstance()->getConexion()->prepare('SELECT `chat.id_userTo`, `users.image` FROM chat WHERE id_from = :idFrom JOIN users on `users.id` = `chat.id_userTo`');
+        $stmt->bindParam(':idFrom', $_SESSION['id_user']);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    public function  vieAllMessagOfPerson(){
+        $stmt = DataBase::getInstance()->getConexion()->prepare('SELECT message FROM chat WHERE id_userTo = :idfrom AND id_userFrom = :idfrom');
         $stmt->bindParam(':idFrom', $_SESSION['id_user']);
         $stmt->execute();
         return $stmt->fetch();
