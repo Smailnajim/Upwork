@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 use App\Controllers\Front\UserController;
 use App\Controllers\Front\RoleController;

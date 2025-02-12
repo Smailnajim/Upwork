@@ -3,7 +3,7 @@ namespace App\Controllers\Front;
 use App\Controllers\Front\FrontController;
 use App\Models\RoleModel;
 
-class RoleController extends FrontController{
+class RoleController {
 
 
     public function getRoleById($id){

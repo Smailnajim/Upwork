@@ -2,9 +2,9 @@
 session_start();
 require "./../vendor/autoload.php";
 
-use App\Controllers\Front\HomeController;
-use App\Controllers\Front\UserController;
 
+use App\Controllers\Front\UserController;
+$userController = new UserController;
 
 $path = $_SERVER['REQUEST_URI'];
 
@@ -12,17 +12,14 @@ $path = str_replace('/UpWork/public', '', $path);
 
 switch ($path) {
     case '/':
-        $homeController = new HomeController();
-        $homeController->index();
+        $userController->index();
         break;
 
     case '/login':
-        $userController = new UserController;
         $userController->viewLogin();
         break;
 
     case '/register':
-        $userController = new UserController;
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             $_SESSION['role'] = 'client';
@@ -32,6 +29,7 @@ switch ($path) {
             $imagePath = './../../public/src/imeges/z';
             $userController->register($_POST['LastName'], $_POST['FirstName'], $_POST['email'], $_POST['Password'], $imagePath);
             header('location: /UpWork/public/');
+
         }else if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             $userController->viewRegister();
