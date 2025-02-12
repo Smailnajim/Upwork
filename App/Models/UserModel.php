@@ -61,9 +61,10 @@ class UserModel{
     }
 
     public function  vieWhoMessag(){
-        $stmt = DataBase::getInstance()->getConexion()->prepare('SELECT id_to FROM chat WHERE id_from = :idFrom');
+        $stmt = DataBase::getInstance()->getConexion()->prepare('SELECT `chat.id_to`, `users.image` FROM chat WHERE id_from = :idFrom JOIN users on `users.id` = `chat.to`');
         $stmt->bindParam(':idFrom', $_SESSION['id_user']);
         $stmt->execute();
+        return $stmt->fetch();
     }
 
     public function getid(){
