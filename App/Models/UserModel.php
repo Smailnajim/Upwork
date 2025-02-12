@@ -58,7 +58,12 @@ class UserModel{
 
     public function  sendMessage(string $sms){
         $stmt = DataBase::getInstance()->getConexion()->prepare('INSERT INTO chat () * FROM users WHERE email = :email and Password = :Password');
+    }
 
+    public function  vieWhoMessag(){
+        $stmt = DataBase::getInstance()->getConexion()->prepare('SELECT id_to FROM chat WHERE id_from = :idFrom');
+        $stmt->bindParam(':idFrom', $_SESSION['id_user']);
+        $stmt->execute();
     }
 
     public function getid(){

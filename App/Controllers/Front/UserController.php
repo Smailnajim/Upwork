@@ -28,6 +28,10 @@ class UserController {
         include_once '../App/View/Messanger.php';
     }
 
+    public function  vieWhoMessag(){
+        // don't ceare about role he can't see this part of code
+        $this->userModel->vieWhoMessag();
+    }
 
     public function login($email, $Password){
         return $this->userModel->login($email, $Password);
@@ -45,7 +49,7 @@ class UserController {
     }
 
 
-    public function  senMessage(string $sms){
+    public function  sendMessage(string $sms){
         ;
     }
 }
