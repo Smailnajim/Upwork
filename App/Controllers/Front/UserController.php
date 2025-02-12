@@ -25,11 +25,20 @@ class UserController {
     }
     
     public function login($email, $Password){
-        
         return $this->userModel->login($email, $Password);
     }
+
     public function register($LastName, $FirstName, $email, $Password, $image){
 
         $this->userModel->register($LastName, $FirstName, $email, $Password, $image);
+    }
+
+    
+    public function  viewMessanger(){
+        include_once "./../App/View/Messanger.php";
+    }
+
+    public function  senMessage(string $sms){
+        ;
     }
 }
