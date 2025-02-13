@@ -4,7 +4,7 @@ namespace App\Models;
 use App\Core\DataBase;
 use PDO;
 
-class UserModel{
+class UserModel {
     private $id;
     private $email;
     private $firstname;
