@@ -22,6 +22,24 @@ CREATE TABLE users(
     password varchar(255)
 );
 
+
+CREATE TABLE projects(
+    id SERIAL PRIMARY KEY,
+    titre varchar(50) not null,
+    description varchar(50) not null,
+    id_client int REFERENCES roles(id),
+    id_freelance int REFERENCES roles(id),
+    budget varchar(255) not null,
+    duration varchar(255),
+    categorie int REFERENCES categories(id)
+);
+
+CREATE TABLE categories(
+    id SERIAL PRIMARY KEY,
+    name varchar(50) 
+);
+
+
 INSERT INTO roles (name)
 VALUES ('freelance');
 
